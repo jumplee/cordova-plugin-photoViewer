@@ -47,6 +47,7 @@
     <source-file src="src/ios/SKPhotoBrowser/SKCaptionView.swift" />
     <source-file src="src/ios/SKPhotoBrowser/SKDetectingImageView.swift" />
     <source-file src="src/ios/SKPhotoBrowser/SKDetectingView.swift" />
+    <source-file src="src/ios/SKPhotoBrowser/SKIndicatorView.swift" />   
     <source-file src="src/ios/SKPhotoBrowser/SKLocalPhoto.swift" />
     <source-file src="src/ios/SKPhotoBrowser/SKMesurement.swift" />
     <source-file src="src/ios/SKPhotoBrowser/SKPagingScrollView.swift" />
