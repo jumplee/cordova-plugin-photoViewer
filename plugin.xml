@@ -56,7 +56,7 @@
     <source-file src="src/ios/SKPhotoBrowser/SKPhotoBrowserOptions.swift" />
     <source-file src="src/ios/SKPhotoBrowser/SKToolbar.swift" />
     <source-file src="src/ios/SKPhotoBrowser/SKZoomingScrollView.swift" />
-    <source-file src="src/ios/SKPhotoBrowser/extensions/SKToolbar.swift" />
-    <source-file src="src/ios/SKPhotoBrowser/extensions/SKZoomingScrollView.swift" />        
+    <source-file src="src/ios/SKPhotoBrowser/extensions/UIImage+Rotation.swift" />
+    <source-file src="src/ios/SKPhotoBrowser/extensions/UIView+Radius.swift" />        
   </platform>
 </plugin>
