@@ -1,0 +1,30 @@
+{
+  "name": "cordova-plugin-photoViewer",
+  "version": "1.0.0",
+  "description": "Cordova photoViewer write with swift",
+  "cordova": {
+    "id": "cordova-plugin-photoViewer",
+    "platforms": [
+      "ios"
+    ]
+  },
+  "scripts": {
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jumplee/cordova-plugin-photoViewer"
+  },
+  "keywords": [
+    "cordova",
+    "photoViwer",
+    "swift3.0",
+    "ecosystem:cordova",
+    "cordova-ios"
+  ],
+  "author": "jumplee",
+  "license": "Apache-2.0",
+  "devDependencies": {
+
+  }
+}
