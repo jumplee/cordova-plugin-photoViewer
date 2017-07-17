@@ -5,3 +5,13 @@
 依赖cordova-plugin-add-swift-support来自动加入bridging-header.h文件
 
 依赖FLAmiationedImage库来支持GIF播放 需要在bridging-header.h中手动引入一下头文件
+
+
+#安装
+
+cordova plugin add https://github.com/jumplee/cordova-plugin-photoViewer.git 
+
+
+#todo
+
+android支持
