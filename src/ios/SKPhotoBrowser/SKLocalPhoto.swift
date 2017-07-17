@@ -11,7 +11,7 @@ import UIKit
 // MARK: - SKLocalPhoto
 open class SKLocalPhoto: NSObject, SKPhotoProtocol {
     
-    open var underlyingImage: UIImage!
+    open var underlyingImage: AnyObject!
     open var photoURL: String!
     open var contentMode: UIViewContentMode = .scaleToFill
     open var shouldCachePhotoURLImage: Bool = false
@@ -46,10 +46,20 @@ open class SKLocalPhoto: NSObject, SKPhotoProtocol {
             if FileManager.default.fileExists(atPath: photoURL) {
                 if let data = FileManager.default.contents(atPath: photoURL) {
                     self.loadUnderlyingImageComplete()
-                    if let image = UIImage(data: data) {
-                        self.underlyingImage = image
-                        self.loadUnderlyingImageComplete()
+                    
+                    if((photoURL as NSString).pathExtension.lowercased()=="gif"){
+                        if let image = FLAnimatedImage.init(animatedGIFData: data){
+                            self.underlyingImage = image
+                            self.loadUnderlyingImageComplete()
+                        }
+                    }else{
+                        if let image = UIImage(data: data) {
+                            self.underlyingImage = image
+                            self.loadUnderlyingImageComplete()
+                        }
                     }
+                    
+                   
                 }
             }
         }

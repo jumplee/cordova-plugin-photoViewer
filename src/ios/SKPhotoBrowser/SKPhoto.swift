@@ -9,7 +9,7 @@
 import UIKit
 
 @objc public protocol SKPhotoProtocol: NSObjectProtocol {
-    var underlyingImage: UIImage! { get }
+    var underlyingImage: AnyObject! { get }
     var caption: String! { get }
     var index: Int { get set}
     var contentMode: UIViewContentMode { get set }
@@ -20,7 +20,7 @@ import UIKit
 // MARK: - SKPhoto
 open class SKPhoto: NSObject, SKPhotoProtocol {
     
-    open var underlyingImage: UIImage!
+    open var underlyingImage: AnyObject!
     open var photoURL: String!
     open var contentMode: UIViewContentMode = .scaleAspectFill
     open var shouldCachePhotoURLImage: Bool = false
@@ -57,7 +57,7 @@ open class SKPhoto: NSObject, SKPhotoProtocol {
         
         if SKCache.sharedCache.imageCache is SKRequestResponseCacheable {
             let request = URLRequest(url: URL(string: photoURL)!)
-            if let img = SKCache.sharedCache.imageForRequest(request) {
+            if let img = SKCache.sharedCache.imageForRequest(request,url: photoURL) {
                 underlyingImage = img
             }
         } else {
@@ -87,8 +87,15 @@ open class SKPhoto: NSObject, SKPhotoProtocol {
                                 _self.loadUnderlyingImageComplete()
                             }
                         }
-                        
-                        if let data = data, let response = response, let image = UIImage(data: data) {
+                        let image:AnyObject
+                        if((_self.photoURL as NSString).pathExtension.lowercased()=="gif"){
+                             image = FLAnimatedImage.init(animatedGIFData: data)
+                        }else{
+                            image = UIImage(data: data!)!
+                        }
+                        if let data = data, let response = response {
+                            
+                            
                             if _self.shouldCachePhotoURLImage {
                                 if SKCache.sharedCache.imageCache is SKRequestResponseCacheable {
                                     SKCache.sharedCache.setImageData(data, response: response, request: task.originalRequest!)

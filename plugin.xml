@@ -58,6 +58,10 @@
     <source-file src="src/ios/SKPhotoBrowser/SKToolbar.swift" />
     <source-file src="src/ios/SKPhotoBrowser/SKZoomingScrollView.swift" />
     <source-file src="src/ios/SKPhotoBrowser/extensions/UIImage+Rotation.swift" />
-    <source-file src="src/ios/SKPhotoBrowser/extensions/UIView+Radius.swift" />        
+    <source-file src="src/ios/SKPhotoBrowser/extensions/UIView+Radius.swift" />
+    <header-file src="src/ios/FLAnimationedImage/FLAnimationedImage.h" />
+    <header-file src="src/ios/FLAnimationedImage/FLAnimationedImageView.h" />   
+    <source-file src="src/ios/FLAnimationedImage/FLAnimationedImage.m" />
+    <source-file src="src/ios/FLAnimationedImage/FLAnimationedImageView.m" />    
   </platform>
 </plugin>

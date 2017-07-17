@@ -45,7 +45,7 @@ class SKPagingScrollView: UIScrollView {
         recycledPages.removeAll()
     }
     
-    func loadAdjacentPhotosIfNecessary(_ photo: SKPhotoProtocol, currentPageIndex: Int) {
+    func loadAdjacentPhotosIfNecessary(_ photo: SKPhoto, currentPageIndex: Int) {
         guard let browser = browser, let page = pageDisplayingAtPhoto(photo) else {
             return
         }
@@ -141,7 +141,7 @@ class SKPagingScrollView: UIScrollView {
             let page: SKZoomingScrollView = SKZoomingScrollView(frame: frame, browser: browser)
             page.frame = frameForPageAtIndex(index)
             page.tag = index + pageIndexTagOffset
-            page.photo = browser.photos[index]
+            page.photo = browser.photos[index] as! SKPhoto
             
             visiblePages.append(page)
             addSubview(page)
@@ -174,7 +174,7 @@ class SKPagingScrollView: UIScrollView {
         return nil
     }
     
-    func pageDisplayingAtPhoto(_ photo: SKPhotoProtocol) -> SKZoomingScrollView? {
+    func pageDisplayingAtPhoto(_ photo: SKPhoto) -> SKZoomingScrollView? {
         for page in visiblePages {
             if page.photo === photo {
                 return page

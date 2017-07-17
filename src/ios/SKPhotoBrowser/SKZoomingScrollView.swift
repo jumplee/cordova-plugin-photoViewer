@@ -10,10 +10,19 @@ import UIKit
 
 open class SKZoomingScrollView: UIScrollView {
     var captionView: SKCaptionView!
-    var photo: SKPhotoProtocol! {
+    var photo: SKPhoto! {
         didSet {
-            photoImageView.image = nil
             if photo != nil {
+            
+                print(photo.photoURL)
+            
+                if((photo.photoURL as NSString).pathExtension.lowercased()=="gif"){
+                
+                    photoImageView.animatedImage=nil
+                }else{
+                    photoImageView.image = nil
+                }
+            
                 displayImage(complete: false)
             }
         }
@@ -42,6 +51,10 @@ open class SKZoomingScrollView: UIScrollView {
     
     deinit {
         photoBrowser = nil
+    }
+    
+    func isGif() ->Bool{
+        return (photo.photoURL as NSString).pathExtension.lowercased()=="gif"
     }
     
     func setup() {
@@ -212,7 +225,13 @@ open class SKZoomingScrollView: UIScrollView {
             // UIGraphicsEndImageContext();
 
             // image
-            photoImageView.image = image
+            if(isGif()){
+                photoImageView.animatedImage = image as! FLAnimatedImage
+            }else{
+                photoImageView.image = image as! UIImage
+            }
+            
+            
             photoImageView.contentMode = photo.contentMode
             photoImageView.backgroundColor = SKPhotoBrowserOptions.backgroundColor
             

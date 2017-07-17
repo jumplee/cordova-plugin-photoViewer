@@ -29,7 +29,7 @@ fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
 
 
 open class SKCaptionView: UIView {
-    fileprivate var photo: SKPhotoProtocol?
+    fileprivate var photo: SKPhoto?
     fileprivate var photoLabel: UILabel!
     fileprivate var photoLabelPadding: CGFloat = 10
     
@@ -41,7 +41,7 @@ open class SKCaptionView: UIView {
         super.init(frame: frame)
     }
     
-    public convenience init(photo: SKPhotoProtocol) {
+    public convenience init(photo: SKPhoto) {
         let screenBound = UIScreen.main.bounds
         self.init(frame: CGRect(x: 0, y: 0, width: screenBound.size.width, height: screenBound.size.height))
         self.photo = photo

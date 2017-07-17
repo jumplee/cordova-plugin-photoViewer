@@ -10,8 +10,8 @@ import UIKit.UIImage
 
 public protocol SKCacheable {}
 public protocol SKImageCacheable: SKCacheable {
-    func imageForKey(_ key: String) -> UIImage?
-    func setImage(_ image: UIImage, forKey key: String)
+    func imageForKey(_ key: String) -> AnyObject?
+    func setImage(_ image: AnyObject, forKey key: String)
     func removeImageForKey(_ key: String)
 }
 

@@ -2,8 +2,6 @@
 
 只支持ios8.0，还没有java版本支持的计划
 
-swift开发需要使用一些额外配置，请记得引入head文件
+依赖cordova-plugin-add-swift-support来自动加入bridging-header.h文件
 
-说明文档
-
-http://stackoverflow.com/questions/25448976/how-to-write-cordova-plugin-in-swift
+依赖FLAmiationedImage库来支持GIF播放 需要在bridging-header.h中手动引入一下头文件

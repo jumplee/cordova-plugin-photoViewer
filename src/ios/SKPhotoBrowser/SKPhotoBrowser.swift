@@ -50,7 +50,7 @@ open class SKPhotoBrowser: UIViewController {
     open weak var delegate: SKPhotoBrowserDelegate?
     
     // photos
-    var photos: [SKPhotoProtocol] = [SKPhotoProtocol]()
+    var photos: [SKPhoto] = [SKPhoto]()
     var numberOfPhotos: Int {
         return photos.count
     }
@@ -69,7 +69,7 @@ open class SKPhotoBrowser: UIViewController {
         setup()
     }
     
-    public convenience init(photos: [SKPhotoProtocol]) {
+    public convenience init(photos: [SKPhoto]) {
         self.init(nibName: nil, bundle: nil)
         let pictures = photos.flatMap { $0 }
         for photo in pictures {
@@ -78,7 +78,7 @@ open class SKPhotoBrowser: UIViewController {
         }
     }
     
-    public convenience init(originImage: UIImage, photos: [SKPhotoProtocol], animatedFromView: UIView) {
+    public convenience init(originImage: UIImage, photos: [SKPhoto], animatedFromView: UIView) {
         self.init(nibName: nil, bundle: nil)
         animator.senderOriginImage = originImage
         animator.senderViewForAnimation = animatedFromView
@@ -148,7 +148,7 @@ open class SKPhotoBrowser: UIViewController {
         reloadData()
         
         var i = 0
-        for photo: SKPhotoProtocol in photos {
+        for photo: SKPhoto in photos {
             photo.index = i
             i = i + 1
         }
@@ -178,7 +178,7 @@ open class SKPhotoBrowser: UIViewController {
     
     // MARK: - Notification
     open func handleSKPhotoLoadingDidEndNotification(_ notification: Notification) {
-        guard let photo = notification.object as? SKPhotoProtocol else {
+        guard let photo = notification.object as? SKPhoto else {
             return
         }
         
@@ -196,7 +196,7 @@ open class SKPhotoBrowser: UIViewController {
         })
     }
     
-    open func loadAdjacentPhotosIfNecessary(_ photo: SKPhotoProtocol) {
+    open func loadAdjacentPhotosIfNecessary(_ photo: SKPhoto) {
         pagingScrollView.loadAdjacentPhotosIfNecessary(photo, currentPageIndex: currentPageIndex)
     }
     
@@ -319,7 +319,7 @@ public extension SKPhotoBrowser {
         hideControlsAfterDelay()
     }
     
-    func photoAtIndex(_ index: Int) -> SKPhotoProtocol {
+    func photoAtIndex(_ index: Int) -> SKPhoto {
         return photos[index]
     }
     
