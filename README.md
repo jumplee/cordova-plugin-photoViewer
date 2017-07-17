@@ -7,11 +7,11 @@
 依赖FLAmiationedImage库来支持GIF播放 需要在bridging-header.h中手动引入一下头文件
 
 
-#安装
+# 安装
 
 cordova plugin add https://github.com/jumplee/cordova-plugin-photoViewer.git 
 
 
-#todo
+# todo
 
 android支持
